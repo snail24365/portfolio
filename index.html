@@ -20,10 +20,19 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body>
+  <body class="stop-scrolling">
+    <div class="loading-screen">
+      <lottie-player
+        src="image/loading.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay
+      ></lottie-player>
+    </div>
     <header class="nav-down">
       <i class="bx bxl-venmo logo"></i>
-
       <nav>
         <ul class="nav-item-list">
           <li class="nav-item">

@@ -3,8 +3,6 @@ var lastScrollTop = 0;
 var delta = 10;
 var navbarHeight = $('header').outerHeight();
 
-
-
 var sectionAppearing = []
 sectionAppearing.push(document.querySelector("section.profile"))
 
@@ -120,5 +118,8 @@ function playInitialAnimation() {
     })
 }
 
-playInitialAnimation()
-
+setTimeout(() => {
+  document.querySelector("body").classList.remove("stop-scrolling")
+  document.querySelector(".loading-screen").style.display = "none";
+  playInitialAnimation()
+}, 1500)
