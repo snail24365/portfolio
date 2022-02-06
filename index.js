@@ -122,4 +122,4 @@ setTimeout(() => {
   document.querySelector("body").classList.remove("stop-scrolling")
   document.querySelector(".loading-screen").style.display = "none";
   playInitialAnimation()
-}, 1500)
+}, 2000)
