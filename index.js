@@ -3,8 +3,39 @@ var lastScrollTop = 0;
 var delta = 10;
 var navbarHeight = $('header').outerHeight();
 
+
+
+var sectionAppearing = []
+sectionAppearing.push(document.querySelector("section.profile"))
+
+for (let miniSection of document.querySelectorAll(".project")) {
+  sectionAppearing.push(miniSection)
+}
+sectionAppearing.push(document.querySelector("section.contact"))
+var didShowMask = Array(sectionAppearing.length).fill(false)
+
+
+// window scroll 이벤트
 $(window).scroll(function (event) {
   didScroll = true;
+
+  const currentScrollBottom = window.scrollY + window.innerHeight;
+
+  for (const [index, section] of sectionAppearing.entries()) {
+    const delta = 30;
+    if (!didShowMask[index] && section.offsetTop + delta < currentScrollBottom) {
+      console.log("aksfjdos;afjsdoifjsd;fjsiadofj;aisodfjsodfjasodfj")
+      didShowMask[index] = true
+      anime({
+        targets: section,
+        opacity: [0, 1],
+        translateY: [-30, 0],
+        easing: 'easeInExpo',
+        duration: 400,
+        delay: 250,
+      });
+    }
+  }
 });
 
 setInterval(function () {
@@ -58,12 +89,13 @@ function playInitialAnimation() {
   anime({
     targets: '.logo',
     opacity: [0, 1],
-    duration: 3000
+    easing: 'easeInCubic',
+    duration: 500
   });
 
   var initialTimeline = anime.timeline({
     easing: 'easeOutExpo',
-    duration: 1500
+    duration: 700
   });
 
   initialTimeline
@@ -77,7 +109,7 @@ function playInitialAnimation() {
       targets: 'section.welcome > *',
       translateY: [30, 0],
       opacity: [0, 1],
-      delay: anime.stagger(300)
+      delay: anime.stagger(200)
     })
     .add({
       targets: ['.side-bar-right', '.side-bar-left'],
@@ -88,5 +120,5 @@ function playInitialAnimation() {
     })
 }
 
-// playInitialAnimation()
+playInitialAnimation()
 
